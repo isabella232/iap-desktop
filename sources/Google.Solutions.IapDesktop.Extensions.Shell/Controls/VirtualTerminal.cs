@@ -429,12 +429,13 @@ namespace Google.Solutions.IapDesktop.Extensions.Shell.Controls
                         // application is running in an RDP session, but the effect
                         // is negligble otherwise.
                         //
+                        var invalidateSize = 50;
                         var caretPos = GetCaret().Position;
                         Invalidate(new Rectangle(
-                            0,
+                            caretPos.X - invalidateSize,
                             caretPos.Y,
-                            this.Width,
-                            Math.Min(100, this.Height - caretPos.Y)));
+                            invalidateSize * 2,
+                            Math.Min(invalidateSize, this.Height - caretPos.Y)));
                     }
                     else
                     {
